@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  ptt-login:
+    build: .
+    environment:
+      - PTT_ID=${PTT_ID}
+      - PTT_PWD=${PTT_PWD}
+    volumes:
+      - ./logs:/var/log
