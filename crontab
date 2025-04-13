@@ -1,0 +1,2 @@
+# 每天早上 8 點執行 PTT 登入
+0 8 * * * docker run --rm -e PTT_ID=$PTT_ID -e PTT_PWD=$PTT_PWD -v /logs:/var/log ptt-login >> /logs/cron.log 2>&1

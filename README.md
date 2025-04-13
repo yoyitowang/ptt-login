@@ -10,10 +10,12 @@
 - ✅ 自動登出
 - ✅ Docker 容器化部署
 - ✅ 完整日誌記錄
+- ✅ 支援 cron 定時執行
 
 ## 系統需求
 
 - Docker
+- Docker Compose
 - 有效的 PTT 帳號
 
 ## 快速開始
@@ -24,18 +26,3 @@
    ```bash
    git clone https://github.com/yourusername/ptt-login.git
    cd ptt-login
-   ```
-
-2. 構建 Docker 映像
-   ```bash
-   docker build -t ptt-login .
-   ```
-
-3. 運行容器
-   ```bash
-   docker run --rm -e PTT_ID=你的PTT帳號 -e PTT_PWD=你的PTT密碼 ptt-login
-   ```
-
-### 使用 Docker Compose
-
-1. 創建 `.env` 檔案並設定您的 PTT 帳號密碼：

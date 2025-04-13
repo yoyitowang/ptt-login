@@ -1,6 +1,7 @@
 version: '3'
 
 services:
+  # 原始的 PTT 登入服務，用於手動執行
   ptt-login:
     build: .
     environment:
@@ -8,3 +9,16 @@ services:
       - PTT_PWD=${PTT_PWD}
     volumes:
       - ./logs:/var/log
+    
+  # Cron 排程器，每天自動執行 PTT 登入
+  cron:
+    build:
+      context: .
+      dockerfile: Dockerfile.cron
+    environment:
+      - PTT_ID=${PTT_ID}
+      - PTT_PWD=${PTT_PWD}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./logs:/logs
+    restart: unless-stopped

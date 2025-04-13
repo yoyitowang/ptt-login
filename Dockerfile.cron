@@ -1,0 +1,16 @@
+FROM alpine:3.18
+
+# 安裝必要的工具
+RUN apk add --no-cache docker-cli tzdata
+
+# 設定時區
+ENV TZ=Asia/Taipei
+
+# 創建日誌目錄
+RUN mkdir -p /logs
+
+# 複製 crontab 檔案
+COPY crontab /etc/crontabs/root
+
+# 啟動 cron 守護進程
+CMD ["crond", "-f", "-d", "8"]
